@@ -43,26 +43,23 @@ if [ -f "$WSLCONFIG_PATH" ]; then
 fi
 
 # Generate .wslconfig
-cat > "$WSLCONFIG_PATH" << EOF
+cat > "$WSLCONFIG_PATH" << 'EOF'
 # WSL2 Performance Configuration
-# Generated: $(date)
-# System: ${TOTAL_RAM_GB}GB RAM, ${CPU_CORES} cores
+# Generated automatically
+# For best performance on dev laptop
 
 [wsl2]
 # Memory allocation (50% of system RAM)
-memory=${RECOMMENDED_RAM}GB
+memory=MEMORY_PLACEHOLDER
 
 # Processor allocation (75% of system cores)
-processors=${RECOMMENDED_CORES}
+processors=PROCESSORS_PLACEHOLDER
 
 # Swap file size (match memory allocation)
-swap=${RECOMMENDED_RAM}GB
+swap=SWAP_PLACEHOLDER
 
-# Swap file location (Windows temp)
-swapfile=C:\\temp\\wsl-swap.vhdx
-
-# Disable page reporting (performance boost)
-pageReporting=false
+# Swap file location (Windows temp) - use forward slashes
+swapfile=C:/temp/wsl-swap.vhdx
 
 # Network mode (default NAT for compatibility)
 # networkingMode=mirrored  # Uncomment for mirrored mode (Windows 11 22H2+)
@@ -82,6 +79,11 @@ guiApplications=true
 # Debug console (disable for production)
 debugConsole=false
 EOF
+
+# Replace placeholders with actual values
+sed -i "s/MEMORY_PLACEHOLDER/${RECOMMENDED_RAM}GB/g" "$WSLCONFIG_PATH"
+sed -i "s/PROCESSORS_PLACEHOLDER/${RECOMMENDED_CORES}/g" "$WSLCONFIG_PATH"
+sed -i "s/SWAP_PLACEHOLDER/${RECOMMENDED_RAM}GB/g" "$WSLCONFIG_PATH"
 
 echo "Configuration written to: $WSLCONFIG_PATH"
 echo ""
