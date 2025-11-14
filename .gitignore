@@ -30,6 +30,9 @@ temp/
 *.sublime-project
 *.sublime-workspace
 
+# Claude Code settings (session-specific)
+.claude/settings.local.json
+
 # OS files
 Thumbs.db
 Desktop.ini
