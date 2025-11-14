@@ -80,23 +80,21 @@ Then end with: "Catch ya on the flipside!"
 
 ## Session Memory
 
-**Last Session:** 2025-11-15 (Session 2 - Post-Debloat Verification & First Scripts)
+**Last Session:** 2025-11-14 (Session 3 - Bug Fix: WSL Username Mismatch)
 
 **Recent Work:**
-- Verified debloat effectiveness post-restart (DiagTrack disabled, WSL functional)
-- Created first utility scripts in /scripts directory:
-  - `optimize-wsl-config.sh` - WSL2 performance configuration generator
-  - `configure-defender-exclusions.ps1` - Defender exclusions for dev performance
-  - `configure-defender-exclusions.sh` - WSL helper for Defender script
-  - `scripts/README.md` - Documentation for all scripts
-- All scripts tested-safe with backups and idempotent design
+- Fixed critical bug in `optimize-wsl-config.sh` where script used WSL username instead of Windows username
+- Issue: Script assumed WSL username ($USER="jk") matched Windows username (actual="jerem")
+- Solution: Detect Windows username dynamically via `cmd.exe /c 'echo %USERNAME%'`
+- Verified other scripts use `$env:USERPROFILE` which auto-resolves correctly
+- Commit: 602633b, pushed to remote
 
-**Previous Session:** 2025-11-14 (Session 1 - Laptop Debloat Research & Execution)
-- Framework initialized, Chris Titus Tech utility applied
-- Balanced debloat (Desktop preset + telemetry disable)
+**Previous Sessions:**
+- **Session 2 (2025-11-15):** Created utility scripts (WSL optimization, Defender exclusions)
+- **Session 1 (2025-11-14):** Framework initialized, Chris Titus Tech debloat applied
 
 **Next Steps:**
-- Run the new optimization scripts (WSL config, Defender exclusions)
+- Run the fixed optimization scripts (WSL config, Defender exclusions)
 - Monitor performance improvements
 - Consider: Registry tweaks for UI performance
 - Consider: O&O ShutUp10++ for additional privacy hardening
@@ -107,6 +105,7 @@ Then end with: "Catch ya on the flipside!"
 - Script creation benefits from defensive coding (backups, checks, clear output)
 - Dev laptop optimization: WSL performance and Defender exclusions are critical
 - User prefers balanced, safe approach over aggressive optimization
+- **NEW:** Always test username assumptions - WSL and Windows usernames can differ
 
 ---
 
