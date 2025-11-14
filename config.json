@@ -1,0 +1,77 @@
+{
+  "project": {
+    "name": "laptop-tools",
+    "description": "Assorted scripts and utilities for laptop maintenance",
+    "type": "personal-tools",
+    "intensity": "minimal-plus",
+    "created": "2025-11-14",
+    "repository": "https://github.com/jkraybill/laptop-tools"
+  },
+  "collaboration": {
+    "aiName": "Gordo",
+    "humanName": "JK",
+    "framework": "gordo-framework",
+    "frameworkVersion": "1.0+",
+    "adaptedFrom": "home-server"
+  },
+  "provider": {
+    "primary": "claude-code",
+    "version": "0.8.0",
+    "features": {
+      "skills": true,
+      "mcp": false,
+      "subagents": true,
+      "codeExecution": true,
+      "autoReadCLAUDE": false
+    }
+  },
+  "healthCheckCadence": 30,
+  "upstreamContributions": {
+    "policy": "enabled",
+    "notes": "Max upstream contributions - JK wants all discoveries shared with framework"
+  },
+  "skills": {
+    "enabled": true,
+    "framework": [
+      "collaboration-health-check",
+      "phase-documenter"
+    ],
+    "project": [],
+    "custom": []
+  },
+  "quality": {
+    "standards": "high-quality-personal",
+    "testing": "manual",
+    "safety": "confirmation-on-destructive",
+    "documentation": "inline-comments"
+  },
+  "security": {
+    "handlesSensitiveData": true,
+    "requiresCredentials": "potentially",
+    "secretsManagement": "env-files",
+    "gitignoreEnforced": true
+  },
+  "shortcuts": {
+    "source": "home-server",
+    "documented": "COLLABORATION.md",
+    "wwgdVariants": {
+      "WWGD?": "propose-only",
+      "WWGD": "execute-standard",
+      "WWGD+": "execute-plus-trust-upgrade",
+      "WWGD++": "execute-max-autonomy",
+      "emphasis": "! and !! modifiers"
+    }
+  },
+  "trust": {
+    "model": "lightweight",
+    "currentLevel": "elevated",
+    "notes": "JK is highly technical, low-stakes project, WWGD+ given during initial setup"
+  },
+  "notes": [
+    "Low-intensity project for personal laptop utilities",
+    "No heavy journal - using README session memory instead",
+    "Quality matters even for personal tools",
+    "Safety first - confirm destructive operations",
+    "Tech stack TBD per tool"
+  ]
+}

@@ -1,0 +1,74 @@
+# Secrets and credentials
+.env
+*.key
+*.pem
+*.p12
+*.pfx
+credentials.json
+secrets.json
+config.local.json
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Script output and caches
+output/
+cache/
+temp/
+*.cache
+*.pid
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+Desktop.ini
+
+# Node modules (if we use JS/TS)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Python (if we use Python)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Build artifacts
+dist/
+build/
+*.exe
+*.out
+*.o
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Catalogues and inventories (may contain sensitive paths)
+*.inventory
+catalogues/private/
+
+# SSH keys and auth
+id_rsa
+id_rsa.pub
+known_hosts
+authorized_keys
