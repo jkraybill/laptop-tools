@@ -260,11 +260,17 @@ def generate_recommendations(analysis):
     if analysis['duplicates']:
         dup_count = len(analysis['duplicates'])
         dup_files = sum(len(paths) - 1 for paths in analysis['duplicates'].values())
-        dup_size = sum(
-            sum(f['size'] for f in files if f.get('hash') == hash_val) - files[0]['size']
-            for hash_val, paths in analysis['duplicates'].items()
-            for files in [[f for f in analysis.get('all_files', []) if f['path'] in paths]]
-        )
+
+        # Create O(1) lookup dict instead of O(n) linear scan - CRITICAL FIX!
+        path_to_file = {f['path']: f for f in analysis.get('all_files', [])}
+
+        dup_size = 0
+        for hash_val, paths in analysis['duplicates'].items():
+            # Get files by path lookup (O(1) per file instead of O(n))
+            files = [path_to_file[path] for path in paths if path in path_to_file]
+            if files:
+                # Size saved = (total size of all copies) - (size of one copy we keep)
+                dup_size += sum(f['size'] for f in files) - files[0]['size']
 
         recommendations.append({
             'category': 'Duplicates',
