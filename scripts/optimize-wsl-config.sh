@@ -4,8 +4,10 @@
 
 set -euo pipefail
 
-WSLCONFIG_PATH="/mnt/c/Users/$USER/.wslconfig"
-BACKUP_PATH="/mnt/c/Users/$USER/.wslconfig.backup.$(date +%Y%m%d_%H%M%S)"
+# Detect Windows username (not WSL username) from USERPROFILE
+WINDOWS_USER=$(cmd.exe /c 'echo %USERNAME%' 2>/dev/null | tr -d '\r')
+WSLCONFIG_PATH="/mnt/c/Users/${WINDOWS_USER}/.wslconfig"
+BACKUP_PATH="/mnt/c/Users/${WINDOWS_USER}/.wslconfig.backup.$(date +%Y%m%d_%H%M%S)"
 
 echo "WSL Performance Configuration Generator"
 echo "======================================="
