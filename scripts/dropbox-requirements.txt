@@ -1,0 +1,4 @@
+# Dropbox API catalog script requirements
+# Install: pip install -r dropbox-requirements.txt
+
+dropbox>=11.36.2
