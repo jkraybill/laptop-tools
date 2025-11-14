@@ -80,28 +80,37 @@ Then end with: "Catch ya on the flipside!"
 
 ## Session Memory
 
-**Last Session:** 2025-11-14 (Session 4 - Bug Fix: .wslconfig Generation Errors)
+**Last Session:** 2025-11-14 (Session 5 - Windows Performance Optimization Suite)
 
 **Recent Work:**
-- Fixed two critical bugs in `optimize-wsl-config.sh` causing WSL startup errors
-- Issue 1: Invalid escaped character in swapfile path (`C:\temp` with backslashes)
-- Issue 2: `pageReporting=false` is not a valid .wslconfig setting
-- Solution: Used quoted heredoc, forward slashes in paths, removed invalid setting
-- Created `fix-wslconfig.sh` for quick patching of corrupted configs
-- Commit: 13eb650, pushed to remote
+- Created comprehensive Windows optimization script suite (4 PowerShell scripts)
+- User ran all scripts successfully; user to restart for full effect
+- Scripts customized based on user hardware (keeps printer/Bluetooth, disables Xbox)
+- Created helper batch files to solve PowerShell execution policy issues
+- Added `backups/` to .gitignore (script-generated user-specific backups)
+- Commits: a099187 (optimization scripts), 5c81312 (execution policy helpers)
+
+**Scripts Created:**
+1. `optimize-startup-programs.ps1` - Removes bloatware startup items (200-500MB RAM saved)
+2. `optimize-visual-effects.ps1` - Disables animations/transparency, keeps smooth scrolling
+3. `optimize-power-plan.ps1` - Creates high-performance dev power plan (no CPU throttling)
+4. `optimize-services.ps1` - Disables unnecessary services (100-300MB RAM saved)
+5. `RUN-OPTIMIZATIONS.bat` - All-in-one launcher with execution policy bypass
+6. `FIX-EXECUTION-POLICY.bat` - One-click execution policy fix
 
 **Previous Sessions:**
+- **Session 4 (2025-11-14):** Fixed .wslconfig generation bugs (heredoc escaping, invalid settings)
 - **Session 3 (2025-11-14):** Fixed WSL username bug in optimize-wsl-config.sh
 - **Session 2 (2025-11-15):** Created utility scripts (WSL optimization, Defender exclusions)
 - **Session 1 (2025-11-14):** Framework initialized, Chris Titus Tech debloat applied
 
 **Next Steps:**
-- User to apply WSL config: `wsl --shutdown` then restart WSL
-- Monitor WSL performance improvements (15GB RAM, 24 cores allocated)
-- Run Defender exclusions script if desired
-- Consider: Registry tweaks for UI performance
-- Consider: O&O ShutUp10++ for additional privacy hardening
-- Add HDD cleanup/cataloguing tools when needed
+- User restarting to apply all Windows optimizations
+- Monitor boot time, RAM usage, UI responsiveness after restart
+- Next phase: O&O ShutUp10++ for privacy hardening (interactive)
+- Next phase: Disk cleanup script to reclaim 10-50GB
+- Future: HDD cleanup/cataloguing tools when needed
+- Future: Additional registry tweaks if desired
 
 **Patterns Learned:**
 - WWGD+ trust level working excellently - high autonomy execution
@@ -109,8 +118,11 @@ Then end with: "Catch ya on the flipside!"
 - Dev laptop optimization: WSL performance and Defender exclusions are critical
 - User prefers balanced, safe approach over aggressive optimization
 - Always test username assumptions - WSL and Windows usernames can differ
-- **NEW:** Heredoc variable expansion can cause escaping issues - use quoted heredocs for config files with special characters
-- **NEW:** Always validate generated config files against official documentation
+- Heredoc variable expansion can cause escaping issues - use quoted heredocs for config files
+- Always validate generated config files against official documentation
+- **NEW:** PowerShell execution policy is common blocker - provide multiple solutions (batch helpers, manual fix, per-script bypass)
+- **NEW:** Ask about hardware/services before disabling (printer, Bluetooth, geolocation, etc.)
+- **NEW:** Visual effects preferences vary - user wanted smooth scrolling kept, everything else disabled
 
 ---
 

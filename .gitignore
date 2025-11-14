@@ -65,6 +65,7 @@ build/
 *.bak
 *.backup
 *~
+backups/
 
 # Catalogues and inventories (may contain sensitive paths)
 *.inventory
