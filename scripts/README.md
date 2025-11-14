@@ -175,31 +175,73 @@ Utility scripts for optimizing and maintaining JK's dev laptop.
    ```
    Approve UAC prompt and review exclusions in PowerShell window
 
-### Phase 2: Windows Optimization (Run in order)
-3. **Startup Programs Cleanup:**
-   ```powershell
-   cd C:\path\to\laptop-tools\scripts
-   .\optimize-startup-programs.ps1
-   ```
-   Review list, approve changes, restart for full effect
+### Phase 2: Windows Optimization
 
-4. **Visual Effects Optimization:**
-   ```powershell
-   .\optimize-visual-effects.ps1
-   ```
-   Log out/in or restart to see full effect
+#### Quick Start (Easiest Method)
+**Using the helper batch file (bypasses execution policy):**
+1. Right-click `RUN-OPTIMIZATIONS.bat` → "Run as Administrator"
+2. Follow prompts to run all optimizations in order
+3. Each script will ask for confirmation before making changes
 
-5. **Power Plan Optimization:**
-   ```powershell
-   .\optimize-power-plan.ps1
-   ```
-   Activates immediately, no restart needed
+#### Manual Method (Individual Scripts)
 
-6. **Services Optimization:**
+**First-time setup - Fix execution policy (one-time):**
+- **Option A:** Right-click `FIX-EXECUTION-POLICY.bat` → "Run as Administrator"
+- **Option B:** In PowerShell (Admin):
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  ```
+
+**Then run scripts individually:**
+```powershell
+cd C:\path\to\laptop-tools\scripts
+
+# 3. Startup Programs Cleanup (restart after for full effect)
+.\optimize-startup-programs.ps1
+
+# 4. Visual Effects Optimization (logout/login or restart)
+.\optimize-visual-effects.ps1
+
+# 5. Power Plan Optimization (instant effect)
+.\optimize-power-plan.ps1
+
+# 6. Services Optimization (restart recommended)
+.\optimize-services.ps1
+```
+
+#### Alternative: Bypass Policy Per Script
+If you don't want to change execution policy:
+```powershell
+powershell -ExecutionPolicy Bypass -File .\optimize-startup-programs.ps1
+```
+
+---
+
+## Troubleshooting
+
+### "cannot be loaded. The file is not digitally signed"
+
+This is PowerShell's execution policy blocking unsigned scripts. **Solutions:**
+
+1. **Easiest:** Use `RUN-OPTIMIZATIONS.bat` (right-click → Run as Admin)
+2. **Recommended:** Run `FIX-EXECUTION-POLICY.bat` once, then use scripts normally
+3. **Manual fix:**
    ```powershell
-   .\optimize-services.ps1
+   Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
    ```
-   Restart recommended for full effect
+4. **Per-script bypass:**
+   ```powershell
+   powershell -ExecutionPolicy Bypass -File .\scriptname.ps1
+   ```
+
+### Scripts won't run / "Access Denied"
+- Ensure you're running PowerShell **as Administrator**
+- Right-click PowerShell icon → "Run as Administrator"
+
+### Services script fails on some services
+- Some services may not exist on all Windows versions
+- Script will skip non-existent services (this is normal)
+- Check output for actual errors vs. "not found" messages
 
 ---
 
