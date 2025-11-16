@@ -75,6 +75,9 @@ scripts/catalog/
 # API tokens and credentials
 scripts/.dropbox-token
 scripts/.dropbox-checkpoint.json
+scripts/.dropbox-refresh-token
+scripts/.dropbox-app-key
+scripts/.dropbox-app-secret
 
 # SSH keys and auth
 id_rsa
