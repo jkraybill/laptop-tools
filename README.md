@@ -80,37 +80,36 @@ Then end with: "Catch ya on the flipside!"
 
 ## Session Memory
 
-**Last Session:** 2025-11-14 (Session 5 - Windows Performance Optimization Suite)
+**Last Session:** 2025-12-27 (Session 7 - Mouse Scroll Freeze Diagnosis)
 
 **Recent Work:**
-- Created comprehensive Windows optimization script suite (4 PowerShell scripts)
-- User ran all scripts successfully; user to restart for full effect
-- Scripts customized based on user hardware (keeps printer/Bluetooth, disables Xbox)
-- Created helper batch files to solve PowerShell execution policy issues
-- Added `backups/` to .gitignore (script-generated user-specific backups)
-- Commits: a099187 (optimization scripts), 5c81312 (execution policy helpers)
+- Diagnosed intermittent scroll freeze issue affecting Chrome and Rimworld
+- Deep research identified Logitech MX Master 3S SmartShift as root cause
+- Created comprehensive diagnostic script `diagnose-scroll-freeze.ps1`
+- **Fix confirmed:** Disabling SmartShift in Logi Options+ resolved the issue
+- Commit: 60059f4 (scroll freeze diagnostic)
 
-**Scripts Created:**
-1. `optimize-startup-programs.ps1` - Removes bloatware startup items (200-500MB RAM saved)
-2. `optimize-visual-effects.ps1` - Disables animations/transparency, keeps smooth scrolling
-3. `optimize-power-plan.ps1` - Creates high-performance dev power plan (no CPU throttling)
-4. `optimize-services.ps1` - Disables unnecessary services (100-300MB RAM saved)
-5. `RUN-OPTIMIZATIONS.bat` - All-in-one launcher with execution policy bypass
-6. `FIX-EXECUTION-POLICY.bat` - One-click execution policy fix
+**Scripts Created This Session:**
+- `diagnose-scroll-freeze.ps1` - Comprehensive scroll freeze diagnostic tool
+  - Checks Windows 24H2 Chrome scroll bug
+  - Audits Logi Options+ processes/CPU
+  - USB power management analysis
+  - DPC latency sampling
+  - Prioritized fix recommendations
 
 **Previous Sessions:**
+- **Session 6 (2025-11-16):** Dropbox cleanup Phase 1 - 164K files deleted, 13GB reclaimed
+- **Session 5 (2025-11-14):** Windows optimization suite (4 PowerShell scripts)
 - **Session 4 (2025-11-14):** Fixed .wslconfig generation bugs (heredoc escaping, invalid settings)
 - **Session 3 (2025-11-14):** Fixed WSL username bug in optimize-wsl-config.sh
 - **Session 2 (2025-11-15):** Created utility scripts (WSL optimization, Defender exclusions)
 - **Session 1 (2025-11-14):** Framework initialized, Chris Titus Tech debloat applied
 
 **Next Steps:**
-- User restarting to apply all Windows optimizations
-- Monitor boot time, RAM usage, UI responsiveness after restart
-- Next phase: O&O ShutUp10++ for privacy hardening (interactive)
-- Next phase: Disk cleanup script to reclaim 10-50GB
-- Future: HDD cleanup/cataloguing tools when needed
-- Future: Additional registry tweaks if desired
+- Dropbox Phase 2: Pre-approved deletions (~1.3 GB), old project folder scans
+- O&O ShutUp10++ for privacy hardening (interactive)
+- Disk cleanup script to reclaim 10-50GB
+- Additional registry tweaks if desired
 
 **Patterns Learned:**
 - WWGD+ trust level working excellently - high autonomy execution
@@ -120,9 +119,12 @@ Then end with: "Catch ya on the flipside!"
 - Always test username assumptions - WSL and Windows usernames can differ
 - Heredoc variable expansion can cause escaping issues - use quoted heredocs for config files
 - Always validate generated config files against official documentation
-- **NEW:** PowerShell execution policy is common blocker - provide multiple solutions (batch helpers, manual fix, per-script bypass)
-- **NEW:** Ask about hardware/services before disabling (printer, Bluetooth, geolocation, etc.)
-- **NEW:** Visual effects preferences vary - user wanted smooth scrolling kept, everything else disabled
+- PowerShell execution policy is common blocker - provide multiple solutions
+- Ask about hardware/services before disabling (printer, Bluetooth, geolocation, etc.)
+- Visual effects preferences vary - user wanted smooth scrolling kept
+- **NEW:** Logitech MX Master 3S SmartShift causes scroll wheel input drops - disable it
+- **NEW:** Deep research with multiple web searches before diagnosis pays off
+- **NEW:** Windows 11 24H2 has known Chrome D3D11 scroll stutter (fix: use D3D9 ANGLE backend)
 
 ---
 
